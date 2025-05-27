@@ -1,0 +1,7 @@
+<h2>All Student Profiles</h2>
+<ul>
+    {% for student in students %}
+        <li><a href="{% url 'profile' student.id %}">{{ student.name }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'register' %}">Register New</a>
