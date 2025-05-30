@@ -1,0 +1,18 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+<h2>{{ book.title }}</h2>
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p>{{ book.description }}</p>
+
+<h3>Reviews:</h3>
+<ul>
+  {% for review in book.reviews.all %}
+    <li><strong>{{ review.reviewer_name }}</strong> rated {{ review.rating }}/10<br>{{ review.comment }}</li>
+  {% empty %}
+    <li>No reviews yet.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'add_review' book.pk %}">Add Review</a>
+{% endblock %}
